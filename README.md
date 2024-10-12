@@ -1,5 +1,5 @@
 # Project File Search
-A basic file search for Godot 4.3+ similar to the ones seen in Visual Studio and Visual Studio Code.
+A basic file search for Godot 4.3+ similar to the ones seen in Visual Studio and Visual Studio Code. I realized like ten minutes after making this that you can just press `Ctrl+P` to do something very similar to what this add-on does, but faster, so this add-on is probably only useful if you really only want to search for specific file types.
 
 ## Installation
 Download from the Godot Asset Library or from GitHub, and ensure the `addons/project_file_search` folder is added to your `addons` folder. Then in Godot go to `Project > Project Settings > Plugins` and enable `Project File Search`.
