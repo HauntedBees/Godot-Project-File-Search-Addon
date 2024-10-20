@@ -16,6 +16,9 @@ The number of characters you need to type before search results begin populating
 ### Included File Formats
 Only file formats listed in this array will appear in the search results. By default, this includes `.tscn` scene, `.gd`/`.cs` script, `.gdshader` shader, and `.res`/`.tres` resource files. As this add-on only opens files in Godot, file formats that Godot doesn't recognize probably shouldn't be included in here.
 
+### Keyboard Shortcut
+Defaults to `Ctrl+,`, but accepts any combination of `Ctrl`, `Shift`, `Alt`, and a single character (or `space`) separated by `+` signs.
+
 ## License
 This add-on is MIT licensed meaning you can do what you want with it, and since it is an editor add-on and not something that will actually end up in your games, no attribution is needed (at least that's my interpretation/intention). I don't know what the whole deal would be if I gave this a copyleft license; this exists to be useful, not to trick developers into accidentally forcing their games to be copyleft. However, if you do make changes to improve this add-on, keeping your changes hoarded on your machine and not sharing them online as well will give me the sad face.
 

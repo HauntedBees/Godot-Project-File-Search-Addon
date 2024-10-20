@@ -14,18 +14,23 @@ func _enter_tree() -> void:
 		"name": HauntedBeesProjectSearchPanel.SETTING_INCLUDED_FILE_FORMATS,
 		"type": TYPE_PACKED_STRING_ARRAY
 	})
+	_bind_setting("Ctrl+,", {
+		"name": HauntedBeesProjectSearchPanel.SETTING_KEYBOARD_SHORTCUT,
+		"type": TYPE_STRING
+	})
 
 func _exit_tree() -> void:
 	_clear_setting(HauntedBeesProjectSearchPanel.SETTING_CHAR_LIMIT)
 	_clear_setting(HauntedBeesProjectSearchPanel.SETTING_INCLUDED_FILE_FORMATS)
+	_clear_setting(HauntedBeesProjectSearchPanel.SETTING_KEYBOARD_SHORTCUT)
 	if _current_panel:
 		_current_panel.queue_free()
 		_current_panel = null
 
 func _input(event: InputEvent) -> void:
-	var iek := event as InputEventKey
-	if !iek || !iek.pressed || iek.keycode != KEY_COMMA || !iek.ctrl_pressed:
+	if !_is_keyboard_shortcut(event as InputEventKey):
 		return
+	get_viewport().set_input_as_handled()
 	var should_create := true
 	if _current_panel:
 		should_create = is_instance_valid(_current_panel) && _current_panel.is_inside_tree()
@@ -53,3 +58,30 @@ func _bind_setting(default_value: Variant, info: Dictionary) -> void:
 
 func _clear_setting(name: String) -> void:
 	ProjectSettings.clear(name)
+
+func _is_keyboard_shortcut(i: InputEventKey) -> bool:
+	if i == null || !i.pressed:
+		return false
+	var shortcut: String = ProjectSettings.get_setting(HauntedBeesProjectSearchPanel.SETTING_KEYBOARD_SHORTCUT, "Ctrl+,")
+	var parts := shortcut.to_lower().split("+")
+	for p in parts:
+		match p:
+			"ctrl":
+				if !i.ctrl_pressed:
+					return false
+			"shift":
+				if !i.shift_pressed:
+					return false
+			"alt":
+				if !i.alt_pressed:
+					return false
+			"space":
+				if i.keycode != KEY_SPACE:
+					return false
+			_:
+				if p.length() > 1:
+					printerr("Your keyboard shortcut %s is invalid." % shortcut)
+					return false
+				elif i.keycode > 1081 || String.chr(i.keycode) != p:
+					return false
+	return true

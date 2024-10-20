@@ -10,6 +10,7 @@ config_version=5
 
 [addons]
 
+project_file_search/keyboard_shortcut="Ctrl+,"
 project_file_search/character_search_limit=4
 project_file_search/included_file_formats=[".tscn", ".gd", ".cs", ".tres", ".res", ".gdshader"]
 

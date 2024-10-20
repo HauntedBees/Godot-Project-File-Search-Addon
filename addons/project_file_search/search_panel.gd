@@ -4,6 +4,7 @@
 
 const SETTING_CHAR_LIMIT := "addons/project_file_search/character_search_limit"
 const SETTING_INCLUDED_FILE_FORMATS := "addons/project_file_search/included_file_formats"
+const SETTING_KEYBOARD_SHORTCUT := "addons/project_file_search/keyboard_shortcut"
 
 const _RESULT_SCENE := preload("./search_result.tscn")
 
