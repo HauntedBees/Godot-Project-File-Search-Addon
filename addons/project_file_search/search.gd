@@ -78,6 +78,9 @@ func _is_keyboard_shortcut(i: InputEventKey) -> bool:
 			"space":
 				if i.keycode != KEY_SPACE:
 					return false
+			"enter":
+				if i.keycode != KEY_ENTER:
+					return false
 			_:
 				if p.length() > 1:
 					printerr("Your keyboard shortcut %s is invalid." % shortcut)
