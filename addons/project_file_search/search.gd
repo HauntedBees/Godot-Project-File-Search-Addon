@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		_current_panel = _SEARCH_SCENE.instantiate()
 		_current_panel.open_file.connect(_open_file)
 		add_child(_current_panel)
-		_current_panel.popup_centered()
+		_current_panel.popup_centered_ratio(0.5)
 
 func _open_file(path: String) -> void:
 	var ei := get_editor_interface()
@@ -53,7 +53,9 @@ func _open_file(path: String) -> void:
 		_current_panel = null
 
 func _bind_setting(default_value: Variant, info: Dictionary) -> void:
-	ProjectSettings.set(info["name"], default_value)
+	if !ProjectSettings.has_setting(info["name"]):
+		ProjectSettings.set(info["name"], default_value)
+	
 	ProjectSettings.add_property_info(info)
 
 func _clear_setting(name: String) -> void:
