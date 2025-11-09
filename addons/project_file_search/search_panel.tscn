@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b70ab8funi82r"]
 
-[ext_resource type="Script" uid="uid://bsb8ncgmvly7h" path="res://addons/project_file_search/search_panel.gd" id="1_eqmk8"]
+[ext_resource type="Script" path="res://addons/project_file_search/search_panel.gd" id="1_eqmk8"]
 
 [node name="SearchPanel" type="PopupPanel"]
 initial_position = 1
